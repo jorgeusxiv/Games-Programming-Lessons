@@ -128,7 +128,7 @@ class posiciones:
     def guiones(self, palabra):
 
         palabras = palabra.split(" ")
-        
+
         for item in palabras:
             longitud = len(item)
             print("_"*longitud, end='')
