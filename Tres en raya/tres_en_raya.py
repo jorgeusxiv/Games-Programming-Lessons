@@ -11,7 +11,7 @@ def print_matriz(matriz):
         fila = fila + str(i+1) + "   " + matriz[i][0] + " | " + matriz[i][1] + " | " + matriz[i][2]
         print(fila)
         if(i<2):
-            print("   -----------")
+            print("   ----------- ")
     return True
 
 print_matriz(matriz)
