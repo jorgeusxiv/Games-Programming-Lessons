@@ -1,4 +1,4 @@
-import numpy as np
+
 # import only system from os
 from os import system, name
 import random
@@ -130,5 +130,6 @@ def manejador_dado(num):
 
 clear()
 
-a = random.randint(1,7)
+a = random.randint(1,6)
+
 manejador_dado(a)
