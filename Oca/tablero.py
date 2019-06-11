@@ -1,3 +1,9 @@
+# import only system from os
+from os import system, name
+
+def clear(self):
+        _ = system('clear')
+
 def rellenar_posicion(fila, pos, pos1, pos2):
     if pos1 == pos and pos2 == pos:
         fila = fila + "  X O"
