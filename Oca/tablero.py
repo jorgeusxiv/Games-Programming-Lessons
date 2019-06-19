@@ -1,7 +1,11 @@
 # import only system from os
 from os import system, name
+import math
 
-def clear(self):
+
+ocas = [5,9,14,18,23,27,32,36,41,45,50,54,59]
+
+def clear():
         _ = system('clear')
 
 def rellenar_posicion(fila, pos, pos1, pos2):
@@ -17,6 +21,16 @@ def rellenar_posicion(fila, pos, pos1, pos2):
     return fila
 
 def imprimir_tablero(pos1, pos2):
+    print("----------------------------------------------------------")
+    print("| Leyenda:                                               |")
+    print("| Ocas: 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59 |")
+    print("| Puentes: 6, 12 -> Avanzas a la casilla 19              |")
+    print("| Posada: 19 -> Estas un turno sin tirar                 |")
+    print("| Laberinto: 42 -> Retrocedes a la casilla 30            |")
+    print("| Carcel: 56 -> Estas dos turnos sin tirar               |")
+    print("| Calavera: 58 -> Retrocedes a la casilla 1              |")
+    print("----------------------------------------------------------")
+    
     #Fila1
     print(" ________________________________________________")
 
@@ -133,9 +147,9 @@ def imprimir_tablero(pos1, pos2):
     fila = fila + "|"
 
     #Imprimir posiciones 60-62
-    for i in range(62,59,-1):
+    for i in range(60,63):
         fila = rellenar_posicion(fila, i, pos1, pos2)
-        if i == 60:
+        if i == 62:
             fila = fila + " |"
         else:
             fila = fila + " "
@@ -162,9 +176,9 @@ def imprimir_tablero(pos1, pos2):
     fila = fila + "|"
 
     #Imprimir posiciones 52-48
-    for i in range(52,47,-1):
+    for i in range(48,53):
         fila = rellenar_posicion(fila, i, pos1, pos2)
-        if i == 48:
+        if i == 52:
             fila = fila + " |"
         else:
             fila = fila + " "
@@ -186,9 +200,9 @@ def imprimir_tablero(pos1, pos2):
 
     #Imprimir posiciones 28-34
     fila = "|"
-    for i in range(34,27,-1):
+    for i in range(28,35):
         fila = rellenar_posicion(fila, i, pos1, pos2)
-        if i == 28:
+        if i == 34:
             fila = fila + " |"
         else:
             fila = fila + " "
@@ -204,7 +218,7 @@ def imprimir_tablero(pos1, pos2):
 
     #Fila 17
     fila = "|"
-    for i in range(8,0,-1):
+    for i in range(1,9):
         fila = rellenar_posicion(fila,i,pos1, pos2)
         fila = fila + " "
     fila = fila + "|"
@@ -214,4 +228,55 @@ def imprimir_tablero(pos1, pos2):
     print("|________________________________________________|")
 
 
-imprimir_tablero(33,28)
+#Funciones para controlar las casillas en las que has caido
+
+
+#Función que comprueba si has caido en una oca
+def pos_oca(pos):
+
+    if pos in ocas:
+        if (pos % 9) == 0:
+            pos = pos + 5
+        elif pos == 59:
+            pos = 64
+        else:
+            pos = pos + 4
+
+    return pos
+
+#Funcion que comprueba si has caido en un puente
+def pos_puente(pos):
+    if pos == 6 or pos == 12:
+        pos = 19
+    return pos
+
+#Funcion que comprueba si has caido en la posada
+def pos_posada(pos,turno):
+    if pos == 19:
+        if turno < 0:
+            turno = turno + 4
+        else:
+            turno = turno - 4
+    return turno
+
+#Funcion que comprueba si has caido en la carcel
+
+def pos_carcel(pos, turno):
+    if pos == 56:
+        if turno < 0:
+            turno = turno + 6
+        else:
+            turno = turno - 6
+    return turno
+
+#Funcion que comprueba si has caido en un laberinto
+def pos_laberinto(pos):
+    if pos == 42:
+        pos = 30
+    return pos
+
+#Funcion que comprueba si has caido en la calavera
+def pos_calavera(pos):
+    if pos == 58:
+        pos = 1
+    return pos

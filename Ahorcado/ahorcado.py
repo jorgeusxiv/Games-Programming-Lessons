@@ -5,7 +5,7 @@ pantalla = P.posiciones()
 palabra = input("Elige una palabra: ")
 palabras = palabra.split(" ")
 check = 0
-lista_palabras_leidas = set()
+lista_letras_leidas = set()
 lista_letras_palabra = set()
 
 
@@ -22,12 +22,12 @@ else:
 
     i = 0
     pantalla.clear()
-    
+
     while(i < 6):
 
         pantalla.manejador(i)
         print("\n")
-        pantalla.imprimir_palabra(palabra, lista_palabras_leidas)
+        pantalla.imprimir_palabra(palabra, lista_letras_leidas)
         print("")
         pantalla.guiones(palabra)
         print("\n")
@@ -40,27 +40,35 @@ else:
             continue
 
         else:
-            if((letra in lista_palabras_leidas) or (letra not in lista_letras_palabra)):
+            if((letra in lista_letras_leidas) or (letra not in lista_letras_palabra)):
                 i = i + 1
                 pantalla.clear()
                 print("ERROR!")
+                print("Las letras leidas son:")
+                print(lista_letras_leidas)
+                print("\n")
                 continue
             else:
-                lista_palabras_leidas.add(letra)
+                lista_letras_leidas.add(letra)
                 pantalla.clear()
                 print("CORRECTO!")
+                print("Las letras leidas son:")
+                print(lista_letras_leidas)
+                print("\n")
 
         #comprobamos si hemos ganado el juego
-        if (lista_letras_palabra == lista_palabras_leidas):
+        if (lista_letras_palabra == lista_letras_leidas):
             break
 
     pantalla.clear()
     pantalla.manejador(i)
     print("\n")
-    pantalla.imprimir_palabra(palabra, lista_palabras_leidas)
+    pantalla.imprimir_palabra(palabra, lista_letras_leidas)
     print("")
     pantalla.guiones(palabra)
     print("\n")
+
+
 
     if(i < 6):
         print("ENHORABUENA HAS GANADO")
