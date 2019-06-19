@@ -30,7 +30,7 @@ def imprimir_tablero(pos1, pos2):
     print("| Carcel: 56 -> Estas dos turnos sin tirar               |")
     print("| Calavera: 58 -> Retrocedes a la casilla 1              |")
     print("----------------------------------------------------------")
-    
+
     #Fila1
     print(" ________________________________________________")
 
@@ -254,9 +254,9 @@ def pos_puente(pos):
 def pos_posada(pos,turno):
     if pos == 19:
         if turno < 0:
-            turno = turno + 4
+            turno = turno + 2
         else:
-            turno = turno - 4
+            turno = turno - 2
     return turno
 
 #Funcion que comprueba si has caido en la carcel
@@ -264,9 +264,9 @@ def pos_posada(pos,turno):
 def pos_carcel(pos, turno):
     if pos == 56:
         if turno < 0:
-            turno = turno + 6
+            turno = turno + 4
         else:
-            turno = turno - 6
+            turno = turno - 4
     return turno
 
 #Funcion que comprueba si has caido en un laberinto

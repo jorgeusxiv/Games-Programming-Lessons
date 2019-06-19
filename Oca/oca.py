@@ -11,6 +11,7 @@ pos1 = 0
 pos2 = 0
 
 while(1):
+
     tablero.clear()
     if turno > 0:
         print("Turno: Jugador 1")
@@ -51,6 +52,7 @@ while(1):
             break
 
         turno_posada = tablero.pos_posada(pos1,turno) #Ajustamos el turno si has caido en la posada
+        print(turno_posada)
         if turno != turno_posada:
             turno = turno_posada
             print("Oh! Has caído en la posada. Estás un turno sin jugar")
